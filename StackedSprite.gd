@@ -1,8 +1,8 @@
-tool
-extends Sprite
+@tool
+extends Sprite2D
 
-export(bool) var show_sprites = false setget set_show_sprites
-export(bool) var rotate_sprites = false setget set_rotate_sprites
+@export var show_sprites: bool = false: set = set_show_sprites
+@export var rotate_sprites: bool = false: set = set_rotate_sprites
 
 func set_show_sprites(_show_sprites):
 	show_sprites = _show_sprites
@@ -11,7 +11,7 @@ func set_show_sprites(_show_sprites):
 	else:
 		clear_sprites()
 
-func set_rotation(_rotation):
+func set_stacked_rotation(_rotation):
 	for sprite in get_children():
 		sprite.rotation = _rotation
 
@@ -33,7 +33,7 @@ func _ready():
 func render_sprites():
 	clear_sprites()
 	for i in range(0, hframes):
-		var next_sprite = Sprite.new()
+		var next_sprite = Sprite2D.new()
 		next_sprite.texture = texture
 		next_sprite.hframes = hframes
 		next_sprite.frame = i
